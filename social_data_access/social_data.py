@@ -1,17 +1,17 @@
 import pandas as pd
+from social_data_access.config import DATA_METADATA
 
 class SocialData:
-    data = {
-        'world_bank.gdp_percentage': {
-            'path': "/Users/jean.machado/projects/social_data_access/local_data/gdp_percentage/API_NY.GDP.MKTP.KD.ZG_DS2_en_csv_v2_401130.csv",
-        },
-        'world_bank.gdp_absolute': {
-            'path': "/Users/jean.machado/projects/social_data_access/local_data/gdp_absolute/API_NY.GDP.MKTP.CD_DS2_en_csv_v2_401322.csv",
-        }
-    }
 
     def read(self, event_name: str) -> pd.DataFrame:
-        if not event_name in self.data:
+        if not event_name in DATA_METADATA:
             raise ValueError(f"Event {event_name} does not exist")
 
-        return pd.read_csv(self.data[event_name]['path'])
+        read_parameters = {}
+        if 'read_parameters' in DATA_METADATA[event_name]:
+            read_parameters = DATA_METADATA[event_name]['read_parameters']
+
+        if DATA_METADATA[event_name]['path'].endswith('.xls') or DATA_METADATA[event_name]['path'].endswith('.xlsx'):
+            return pd.read_excel(DATA_METADATA[event_name]['path'], **read_parameters)
+
+        return pd.read_csv(DATA_METADATA[event_name]['path'], **read_parameters)
