@@ -10,6 +10,9 @@ DATA_METADATA = {
         'path': BASE_DATA_PATH + "/world_bank/gdp_percentage/API_NY.GDP.MKTP.KD.ZG_DS2_en_csv_v2_401130.csv",
         'source': 'https://data.worldbank.org/indicator/SE.XPD.TOTL.GB.ZS?locations=BR-DE'
     },
+    'world_bank.poverty': {
+        'path': BASE_DATA_PATH + "/world_bank/poverty/API_11_DS2_en_csv_v2_512996.csv",
+    },
     'world_bank.gdp_absolute': {
         'path': BASE_DATA_PATH + "/world_bank/gdp_absolute/API_NY.GDP.MKTP.CD_DS2_en_csv_v2_401322.csv",
     },
