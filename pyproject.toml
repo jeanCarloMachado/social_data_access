@@ -6,7 +6,7 @@ authors = ["Jean Carlo Machado <jean.machado@getyourguide.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.10,<4.0"
 fire = "*"
 pandas = "^2.2.2"
 jupyter = "^1.0.0"
